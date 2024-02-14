@@ -1,0 +1,26 @@
+
+W
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ú–ÌÙ1
+7
+java:S1220""Move this file to a named package.8ú–ÌÙ1
+L	java:S106"+Replace this use of System.out by a logger.(†‹®ğøÿÿÿÿ8ë—ÌÙ1
+G	java:S106"+Replace this use of System.out by a logger.(ò€¨ë8ë—ÌÙ1
+L	java:S106"+Replace this use of System.out by a logger.(÷şşÃùÿÿÿÿ8ë—ÌÙ1
+F	java:S106"+Replace this use of System.out by a logger.(”ş8ë—ÌÙ1
+L	java:S106"+Replace this use of System.out by a logger.(ñ§³Õüÿÿÿÿ8ë—ÌÙ1
+L	java:S106"+Replace this use of System.out by a logger.(‘÷¹Šûÿÿÿÿ8ë—ÌÙ1
+L	java:S106"+Replace this use of System.out by a logger.(³Ù—Œúÿÿÿÿ8ë—ÌÙ1
+f
+java:S2147,"DCombine this catch with the one at line 42, which has the same body.(À¶ßüùÿÿÿÿ8ë—ÌÙ1
+f
+java:S2147."DCombine this catch with the one at line 44, which has the same body.(î‚ûÿÿÿÿ8ë—ÌÙ1
+F	java:S106"+Replace this use of System.out by a logger.(¶şZ8ë—ÌÙ1
+L	java:S106$"+Replace this use of System.out by a logger.(†‹®ğøÿÿÿÿ8ë—ÌÙ1
+L	java:S106%"+Replace this use of System.out by a logger.(úô÷ıüÿÿÿÿ8ë—ÌÙ1
+L	java:S106&"+Replace this use of System.out by a logger.(øÈ‹şÿÿÿÿ8ë—ÌÙ1
+L	java:S106'"+Replace this use of System.out by a logger.(‘÷¹Šûÿÿÿÿ8ë—ÌÙ1
+L	java:S106+"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8ë—ÌÙ1
+L	java:S106-"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8ë—ÌÙ1
+L	java:S106/"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8ë—ÌÙ1
+G	java:S1063"+Replace this use of System.out by a logger.(ú…ì8ë—ÌÙ1
+L	java:S1066"+Replace this use of System.out by a logger.(»¹Şëÿÿÿÿÿ8ë—ÌÙ1
