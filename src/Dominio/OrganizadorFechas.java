@@ -3,10 +3,6 @@ package Dominio;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
-import Dominio.Exception.FechaAdelantadaException;
-import Dominio.Exception.FechaFormatoErroneoException;
-import Dominio.Exception.FechaNoValidaException;
-
 public class ControlFechas {
     public static LocalDate splitDeFecha(String fechaStr) {
         try {
@@ -36,11 +32,30 @@ public class ControlFechas {
 
     private static boolean fechaEsValida(int dia, int mes, int anhio) {
         try {
-            LocalDate.of(anhio, mes, dia);
+            if (mes < 1 || mes > 12) {
+                return false;
+            }
+            if (dia < 1 || dia > 31) {
+                return false;
+            }
+            if (mes == 2) {
+                if (dia > 29) {
+                    return false;
+                }
+                if (dia == 29 && !esAnhioBisiesto(anhio)) {
+                    return false;
+                }
+            }
+            if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) {
+                return false;
+            }
             return true;
         } catch (DateTimeException e) {
             return false;
         }
     }
 
+    private static boolean esAnhioBisiesto(int anhio) {
+        return (anhio % 4 == 0 && anhio % 100 != 0) || (anhio % 400 == 0);
+    }
 }

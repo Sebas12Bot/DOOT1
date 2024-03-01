@@ -11,3 +11,6 @@ a
 1src/Dominio/Exception/FechaNoValidaException.java,e\4\e4dadb310fccee56ffd562eb23d0e044ab035547
 c
 3src/Dominio/Exception/FechaAdelantadaException.java,1\6\169efe624662dd4efd54def46c9fcca48ed93d2b
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
