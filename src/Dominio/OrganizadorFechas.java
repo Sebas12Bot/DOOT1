@@ -1,9 +1,13 @@
 package Dominio;
 
+import Dominio.Exception.FechaAdelantadaException;
+import Dominio.Exception.FechaFormatoErroneoException;
+import Dominio.Exception.FechaNoValidaException;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
-public class ControlFechas {
+public class OrganizadorFechas {
     public static LocalDate splitDeFecha(String fechaStr) {
         try {
             String[] divisionFechas = fechaStr.split("/");

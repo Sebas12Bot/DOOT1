@@ -1,8 +1,9 @@
 package App;
 
-import Dominio.ControlFechas;
+import Dominio.OrganizadorFechas;
 import Dominio.Exception.FechaAdelantadaException;
 import Dominio.Exception.FechaNoValidaException;
+import Dominio.MapeoMeses;
 import Dominio.TiempoTranscurrido;
 import Dominio.Exception.FechaFormatoErroneoException;
 import java.time.LocalDate;
@@ -32,12 +33,13 @@ public class Main {
                             System.out.println("Ingrese la fecha del pasado en formato (dia/mes/año): ");
                             String fechaString = scanner.nextLine();
 
-                            LocalDate fechaUsuario = ControlFechas.splitDeFecha(fechaString);
+                            LocalDate fechaUsuario = OrganizadorFechas.splitDeFecha(fechaString);
                             LocalDate fechaActual = LocalDate.now();
 
                             System.out.println("╔════════════════════════════════════════════╗");
                             System.out.println("║Fecha actual: " + fechaActual);
                             System.out.println("║Fecha ingresada: " + fechaUsuario);
+                            MapeoMeses.imprimirFechaConNombreMes(fechaUsuario);
                             System.out.println("╚════════════════════════════════════════════╝");
 
                             TiempoTranscurrido.tiempoTranscurrido(fechaUsuario, fechaActual);

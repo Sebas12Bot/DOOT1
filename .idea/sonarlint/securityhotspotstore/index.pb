@@ -1,8 +1,6 @@
 
 S
 #src/Dominio/TiempoTranscurrido.java,9\d\9de3f21bac9419ed7998e2fa00b7c11f27093863
-N
-src/Dominio/ControlFechas.java,e\c\ec31ee453f8095c99f762ee89518e6155077fcb8
 A
 src/App/Main.java,b\1\b11ae5283a5ff4086dd6bc7f62f7f7ae842d4930
 g
@@ -14,3 +12,15 @@ c
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+K
+src/Dominio/MapeoMeses.java,8\3\835bec94e89bd3f56500f13dccbe6e8c81595dce
+L
+src/Dominio/ManejoFecha.java,5\c\5c104a8db1bd4da956bccb72f02238b616678fc6
+R
+"src/Dominio/OrganizadorFechas.java,f\7\f710d98445c96735fbc88bcda0be5bea9a1a189a
+L
+src/Dominio/FechaPasada.java,c\8\c8fc9faf4cb9164f8f20be716718726bce42170f
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
