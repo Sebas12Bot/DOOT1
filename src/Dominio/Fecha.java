@@ -32,7 +32,7 @@ public class Fecha {
 
     public void setMes(Byte mes) {
         if(!UtilFecha.esMesValid(mes)){
-            throw  new RuntimeException(" lL mes debe ser entre 1 y 12 ");
+            throw  new RuntimeException(" EL mes debe ser entre 1 y 12 ");
         }
         this.mes = mes;
     }
