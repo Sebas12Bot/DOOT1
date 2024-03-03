@@ -1,61 +1,45 @@
 package App;
 
-import Dominio.OrganizadorFechas;
-import Dominio.Exception.FechaAdelantadaException;
-import Dominio.Exception.FechaNoValidaException;
-import Dominio.MapeoMeses;
-import Dominio.TiempoTranscurrido;
-import Dominio.Exception.FechaFormatoErroneoException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Logger;
+
+import Dominio.Fecha;
+import Dominio.Exception.FechaAdelantadaException;
+import Dominio.Exception.FechaFormatoErroneoException;
+import Dominio.Exception.FechaNoValidaException;
+import Dominio.MapeoMeses;
+import Dominio.TiempoTranscurrido;
 
 public class Main {
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int opc;
 
         do {
             try {
-                System.out.println("╔════════════════════════════════════════════╗");
-                System.out.println("║    Bienvenido al calculador de fechas      ║");
-                System.out.println("║             (Fechas pasadas)               ║");
-                System.out.println("║    1. Calcular Fecha.                      ║");
-                System.out.println("║    2. Salir.                               ║");
-                System.out.println("╚════════════════════════════════════════════╝");
-                System.out.println("Digite una opcion: ");
+                logger.info("╔════════════════════════════════════════════╗");
+                logger.info("║    Bienvenido al calculador de fechas      ║");
+                logger.info("║             (Fechas pasadas)               ║");
+                logger.info("║    1. Calcular Fecha.                      ║");
+                logger.info("║    2. Salir.                               ║");
+                logger.info("╚════════════════════════════════════════════╝");
+                logger.info("Digite una opcion: ");
                 opc = scanner.nextInt();
                 scanner.nextLine();
 
                 switch (opc) {
                     case 1:
-                        try {
-                            System.out.println("Ingrese la fecha del pasado en formato (dia/mes/año): ");
-                            String fechaString = scanner.nextLine();
-
-                            LocalDate fechaUsuario = OrganizadorFechas.splitDeFecha(fechaString);
-                            LocalDate fechaActual = LocalDate.now();
-
-                            System.out.println("╔════════════════════════════════════════════╗");
-                            System.out.println("║Fecha actual: " + fechaActual);
-                            System.out.println("║Fecha ingresada: " + fechaUsuario);
-                            MapeoMeses.imprimirFechaConNombreMes(fechaUsuario);
-                            System.out.println("╚════════════════════════════════════════════╝");
-
-                            TiempoTranscurrido.tiempoTranscurrido(fechaUsuario, fechaActual);
-                        } catch (FechaFormatoErroneoException e) {
-                            System.out.println(e.getMessage());
-                        } catch (FechaAdelantadaException e) {
-                            System.out.println(e.getMessage());
-                        } catch (FechaNoValidaException e) {
-                            System.out.println(e.getMessage());
-                        }
+                        calcularFecha(scanner);
                         break;
                     case 2:
-                        System.out.println("Finalizado");
+                        logger.info("Finalizado");
                         break;
                     default:
-                        System.out.println("Opcion invalida, digite nuevamente.");
+                        logger.info("Opcion invalida, digite nuevamente.");
                 }
             } catch (InputMismatchException e) {
                 scanner.nextLine();
@@ -64,5 +48,29 @@ public class Main {
         } while (opc != 2);
 
         scanner.close();
+    }
+
+    private static void calcularFecha(Scanner scanner) {
+        try {
+            logger.info("Ingrese la fecha del pasado en formato (dia/mes/año): ");
+            String fechaString = scanner.nextLine();
+
+            Fecha fechaUsuario = Fecha.Crear(Byte.parseByte(fechaString.split("/")[0]),
+                    Byte.parseByte(fechaString.split("/")[1]), Short.parseShort(fechaString.split("/")[2]));
+            LocalDate fechaActual = LocalDate.now();
+
+            logger.info("╔════════════════════════════════════════════╗");
+            logger.info("║Fecha actual: " + fechaActual);
+            logger.info("║Fecha ingresada: " + fechaUsuario.getDia() + "/" + fechaUsuario.getMes() + "/" + fechaUsuario.getAnio());
+            MapeoMeses.imprimirFechaConNombreMes(fechaUsuario);
+            logger.info("╚════════════════════════════════════════════╝");
+
+            LocalDate fechaUsuarioLocalDate = LocalDate.of(fechaUsuario.getAnio(), fechaUsuario.getMes(),
+                    fechaUsuario.getDia());
+
+            TiempoTranscurrido.tiempoTranscurrido(fechaUsuarioLocalDate, fechaActual);
+        } catch (FechaFormatoErroneoException | FechaAdelantadaException | FechaNoValidaException e) {
+            logger.warning(e.getMessage());
+        }
     }
 }

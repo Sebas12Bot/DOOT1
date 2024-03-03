@@ -1,11 +1,12 @@
 package Dominio;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class MapeoMeses {
     private static final Map<Integer, String> meses = new HashMap<>();
+    private static final Logger logger = Logger.getLogger(MapeoMeses.class.getName());
 
     static {
         meses.put(1, "Enero");
@@ -22,17 +23,20 @@ public class MapeoMeses {
         meses.put(12, "Diciembre");
     }
 
+    private MapeoMeses() {
+    }
+
     public static String obtenerNombreMes(int numeroMes) {
         return meses.getOrDefault(numeroMes, "Mes inválido");
     }
 
-    public static void imprimirFechaConNombreMes(LocalDate fecha) {
-        int mes = fecha.getMonthValue();
-        int dia = fecha.getDayOfMonth();
-        int anhio = fecha.getYear();
+    public static void imprimirFechaConNombreMes(Fecha fecha) {
+        int mes = fecha.getMes();
+        int dia = fecha.getDia();
+        int anhio = fecha.getAnio();
 
         String nombreMes = obtenerNombreMes(mes);
-
-        System.out.println("Fecha: " + dia + " de " + nombreMes + " de " + anhio);
+        String mensaje = String.format("Fecha: %d de %s de %d", dia, nombreMes, anhio);
+        logger.info(mensaje);
     }
 }
