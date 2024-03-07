@@ -1,4 +1,4 @@
-package Dominio.Exception;
+package dominio.exception;
 
 public class FechaAdelantadaException extends RuntimeException{
     public FechaAdelantadaException (){

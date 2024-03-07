@@ -1,16 +1,17 @@
-package App;
+package app;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import Dominio.Fecha;
-import Dominio.Exception.FechaAdelantadaException;
-import Dominio.Exception.FechaFormatoErroneoException;
-import Dominio.Exception.FechaNoValidaException;
-import Dominio.MapeoMeses;
-import Dominio.TiempoTranscurrido;
+import dominio.Fecha;
+import dominio.exception.FechaAdelantadaException;
+import dominio.exception.FechaFormatoErroneoException;
+import dominio.exception.FechaNoValidaException;
+import dominio.MapeoMeses;
+import dominio.TiempoTranscurrido;
 
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
@@ -42,6 +43,7 @@ public class Main {
                         logger.info("Opcion invalida, digite nuevamente.");
                 }
             } catch (InputMismatchException e) {
+                logger.warning("Entrada no valida. Por favor, ingrese un numero.");
                 scanner.nextLine();
                 opc = 0;
             }
@@ -55,12 +57,23 @@ public class Main {
             logger.info("Ingrese la fecha del pasado en formato (dia/mes/año): ");
             String fechaString = scanner.nextLine();
 
-            Fecha fechaUsuario = Fecha.Crear(Byte.parseByte(fechaString.split("/")[0]),
-                    Byte.parseByte(fechaString.split("/")[1]), Short.parseShort(fechaString.split("/")[2]));
+            String[] partesFecha = fechaString.split("/");
+            if (partesFecha.length != 3) {
+                throw new FechaFormatoErroneoException("Formato de fecha incorrecto.");
+            }
+
+            byte dia = Byte.parseByte(partesFecha[0]);
+            byte mes = Byte.parseByte(partesFecha[1]);
+            short anio = Short.parseShort(partesFecha[2]);
+
+            Fecha fechaUsuario = Fecha.crear(dia, mes, anio);
             LocalDate fechaActual = LocalDate.now();
 
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String fechaActualFormateada = fechaActual.format(formatter);
+
             logger.info("╔════════════════════════════════════════════╗");
-            logger.info("║Fecha actual: " + fechaActual);
+            logger.info("║Fecha actual: " + fechaActualFormateada);
             logger.info("║Fecha ingresada: " + fechaUsuario.getDia() + "/" + fechaUsuario.getMes() + "/" + fechaUsuario.getAnio());
             MapeoMeses.imprimirFechaConNombreMes(fechaUsuario);
             logger.info("╚════════════════════════════════════════════╝");
@@ -71,6 +84,8 @@ public class Main {
             TiempoTranscurrido.tiempoTranscurrido(fechaUsuarioLocalDate, fechaActual);
         } catch (FechaFormatoErroneoException | FechaAdelantadaException | FechaNoValidaException e) {
             logger.warning(e.getMessage());
+        } catch (NumberFormatException e) {
+            logger.warning("Formato de fecha incorrecto. Por favor, ingrese numeros validos.");
         }
     }
 }

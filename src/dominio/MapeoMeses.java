@@ -1,4 +1,4 @@
-package Dominio;
+package dominio;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class MapeoMeses {
     }
 
     public static String obtenerNombreMes(int numeroMes) {
-        return meses.getOrDefault(numeroMes, "Mes inválido");
+        return meses.getOrDefault(numeroMes, "Mes invalido");
     }
 
     public static void imprimirFechaConNombreMes(Fecha fecha) {

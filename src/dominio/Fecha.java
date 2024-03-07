@@ -1,4 +1,8 @@
-package Dominio;
+package dominio;
+
+import dominio.exception.AnhioNoValidoException;
+import dominio.exception.DiaNoValidoException;
+import dominio.exception.MesNoValidoException;
 
 public class Fecha {
     private Byte dia;
@@ -6,12 +10,12 @@ public class Fecha {
     private Short anio;
 
     private Fecha(Byte dia, Byte mes, Short anio) {
-        setAnio(anio);
+        setAnhio(anio);
         setMes(mes);
         setDia(dia);
     }
 
-    public static Fecha Crear(Byte dia, Byte mes, Short anio) {
+    public static Fecha crear(Byte dia, Byte mes, Short anio) {
         return new Fecha(dia, mes, anio);
     }
 
@@ -21,7 +25,7 @@ public class Fecha {
 
     public void setDia(Byte dia) {
         if(UtilFecha.esDiaValid(dia, mes, anio)){
-            throw  new RuntimeException("El dia no es valido"+dia+" Mes:"+mes);
+            throw  new DiaNoValidoException();
         }
         this.dia = dia;
     }
@@ -32,7 +36,7 @@ public class Fecha {
 
     public void setMes(Byte mes) {
         if(!UtilFecha.esMesValid(mes)){
-            throw  new RuntimeException(" EL mes debe ser entre 1 y 12 ");
+            throw  new MesNoValidoException();
         }
         this.mes = mes;
     }
@@ -41,10 +45,11 @@ public class Fecha {
         return anio;
     }
 
-    public void setAnio(Short anio) {
+    public void setAnhio(Short anio) {
         if(UtilFecha.esAniValid(anio)){
-            throw  new RuntimeException("El año no es valido");
+            throw  new AnhioNoValidoException();
         }
         this.anio = anio;
     }
+
 }

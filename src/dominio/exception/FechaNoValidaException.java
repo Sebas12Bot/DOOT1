@@ -1,4 +1,4 @@
-package Dominio.Exception;
+package dominio.exception;
 
 public class FechaNoValidaException extends RuntimeException {
     public FechaNoValidaException(){

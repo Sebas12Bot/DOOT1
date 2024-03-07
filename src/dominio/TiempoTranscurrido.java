@@ -1,4 +1,4 @@
-package Dominio;
+package dominio;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -16,7 +16,7 @@ public class TiempoTranscurrido {
         long minutosTranscurridos = ChronoUnit.MINUTES.between(fechaUsuario.atStartOfDay(), fechaActual.atStartOfDay());
         long segundosTranscurridos = ChronoUnit.SECONDS.between(fechaUsuario.atStartOfDay(), fechaActual.atStartOfDay());
 
-        String mensaje = String.format("Tiempo transcurrido de la fecha actual ☺☻:%n%d días,%n%d horas,%n%d minutos,%n%d segundos.", diasTranscurridos, horasTranscurridas, minutosTranscurridos, segundosTranscurridos);
+        String mensaje = String.format("Tiempo transcurrido de la fecha actual ☺☻:%n%d dias,%n%d horas,%n%d minutos,%n%d segundos.", diasTranscurridos, horasTranscurridas, minutosTranscurridos, segundosTranscurridos);
 
         logger.info(mensaje);
     }
