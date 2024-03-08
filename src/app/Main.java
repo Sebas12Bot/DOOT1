@@ -73,7 +73,7 @@ public class Main {
             String fechaActualFormateada = fechaActual.format(formatter);
 
             logger.info("╔════════════════════════════════════════════╗");
-            logger.info("║Fecha actual: " + fechaActualFormateada);
+            logger.info(UtilTexto.concatenar("║Fecha actual:{} ",fechaActualFormateada));
             logger.info("║Fecha ingresada: " + fechaUsuario.getDia() + "/" + fechaUsuario.getMes() + "/" + fechaUsuario.getAnio());
             MapeoMeses.imprimirFechaConNombreMes(fechaUsuario);
             logger.info("╚════════════════════════════════════════════╝");
