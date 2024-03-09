@@ -74,7 +74,7 @@ public class Main {
 
             logger.info("╔════════════════════════════════════════════╗");
             logger.info(UtilTexto.concatenar("║Fecha actual:{} ",fechaActualFormateada));
-            logger.info("║Fecha ingresada: " + fechaUsuario.getDia() + "/" + fechaUsuario.getMes() + "/" + fechaUsuario.getAnio());
+            logger.info(UtilTexto.concatenar("║Fecha ingresada:{} ", fechaUsuario.getDia() + "/" + fechaUsuario.getMes() + "/" + fechaUsuario.getAnio()));
             MapeoMeses.imprimirFechaConNombreMes(fechaUsuario);
             logger.info("╚════════════════════════════════════════════╝");
 
