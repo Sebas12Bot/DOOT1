@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dominio.Fecha;
@@ -73,8 +74,10 @@ public class Main {
             String fechaActualFormateada = fechaActual.format(formatter);
 
             logger.info("╔════════════════════════════════════════════╗");
-            logger.info(UtilTexto.concatenar("║Fecha actual:{} ",fechaActualFormateada));
-            logger.info(UtilTexto.concatenar("║Fecha ingresada:{} ", fechaUsuario.getDia() + "/" + fechaUsuario.getMes() + "/" + fechaUsuario.getAnio()));
+            if (logger.isLoggable(Level.INFO)) {
+                logger.info("║Fecha actual:{} " + fechaActualFormateada);
+                logger.info("║Fecha ingresada:{} " + fechaUsuario.getDia() + "/" + fechaUsuario.getMes() + "/" + fechaUsuario.getAnio());
+            }
             MapeoMeses.imprimirFechaConNombreMes(fechaUsuario);
             logger.info("╚════════════════════════════════════════════╝");
 
